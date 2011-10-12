@@ -1,0 +1,165 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <title>ONIX Code List 65 [Issue 8]</title><style type="text/css">
+						BODY {
+							font-family: Arial, Helvetica, sanserif;
+						}
+						.listHeading {
+							font-size: 16pt;
+							font-weight: bold;
+							margin-top: 12pt;
+						}
+					</style></head>
+   <body>
+      <div class="listHeading">ONIX Code Lists Issue 8, April 2008<br>List 65: Product availability
+      </div>
+      <table width="100%">
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+         <tr align="left">
+            <th width="10%">Value</th>
+            <th width="30%">Description</th>
+            <th width="60%">Notes</th>
+         </tr>
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>01</td>
+            <td>Cancelled</td>
+            <td>Cancelled: product was announced, and subsequently abandoned</td>
+         </tr>
+         <tr valign="top">
+            <td>10</td>
+            <td>Not yet available</td>
+            <td>Not yet available (requires &lt;ExpectedShipDate&gt;, except in exceptional circumstances where no date is known)</td>
+         </tr>
+         <tr valign="top">
+            <td>11</td>
+            <td>Awaiting stock</td>
+            <td>Not yet available, but will be a stock item when available (requires &lt;ExpectedShipDate&gt;, except in exceptional circumstances
+               where no date is known). Used particularly for imports which have been published in the country of origin but have not yet
+               arrived in the importing country.
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>12</td>
+            <td>Not yet available, will be POD</td>
+            <td>Not yet available, to be published as print-on-demand only. May apply either to a POD successor to an existing conventional
+               edition, when the successor will be published under a different ISBN (normally because different trade terms apply); or to
+               a title that is being published as a POD original.
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>20</td>
+            <td>Available</td>
+            <td>Available from us (form of availability unspecified)</td>
+         </tr>
+         <tr valign="top">
+            <td>21</td>
+            <td>In stock</td>
+            <td>Available from us as a stock item</td>
+         </tr>
+         <tr valign="top">
+            <td>22</td>
+            <td>To order</td>
+            <td>Available from us as a non-stock item, by special order</td>
+         </tr>
+         <tr valign="top">
+            <td>23</td>
+            <td>Manufactured on demand</td>
+            <td>Available from us by manufacture on demand</td>
+         </tr>
+         <tr valign="top">
+            <td>30</td>
+            <td>Temporarily unavailable</td>
+            <td>Temporarily unavailable: temporarily unavailable from us (reason unspecified) (requires &lt;ExpectedShipDate&gt;, except in exceptional
+               circumstances where no date is known)
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>31</td>
+            <td>Out of stock</td>
+            <td>Stock item, temporarily out of stock (requires &lt;ExpectedShipDate&gt;, except in exceptional circumstances where no date is known)</td>
+         </tr>
+         <tr valign="top">
+            <td>32</td>
+            <td>Reprinting</td>
+            <td>Temporarily unavailable, reprinting (requires &lt;ExpectedShipDate&gt;, except in exceptional circumstances where no date is known)</td>
+         </tr>
+         <tr valign="top">
+            <td>33</td>
+            <td>Awaiting reissue</td>
+            <td>Temporarily unavailable, awaiting reissue (requires the &lt;Reissue&gt; composite, and &lt;ExpectedShipDate&gt;, except in exceptional
+               circumstances where no date is known)
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>40</td>
+            <td>Not available</td>
+            <td>Not available from us (reason unspecified; if the reason is rights-related, it should be specified in PR.21)</td>
+         </tr>
+         <tr valign="top">
+            <td>41</td>
+            <td>Replaced by new product</td>
+            <td>This product is unavailable, but a successor product or edition is or will be available from us (identify successor in &lt;RelatedProduct&gt;)</td>
+         </tr>
+         <tr valign="top">
+            <td>42</td>
+            <td>Other format available</td>
+            <td>This product is unavailable, but the same content is or will be available from us in an alternative format (identify other
+               format product in &lt;RelatedProduct&gt;)
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>43</td>
+            <td>No longer supplied by us</td>
+            <td>Identify new supplier in &lt;NewSupplier&gt; if possible</td>
+         </tr>
+         <tr valign="top">
+            <td>44</td>
+            <td>Apply direct</td>
+            <td>Not available to trade, apply direct to publisher</td>
+         </tr>
+         <tr valign="top">
+            <td>45</td>
+            <td>Not sold separately</td>
+            <td>Must be bought as part of a set (identify set in &lt;RelatedProduct&gt;)</td>
+         </tr>
+         <tr valign="top">
+            <td>46</td>
+            <td>Withdrawn from sale</td>
+            <td>May be for legal reasons or to avoid giving offence</td>
+         </tr>
+         <tr valign="top">
+            <td>47</td>
+            <td>Remaindered</td>
+            <td>Remaindered</td>
+         </tr>
+         <tr valign="top">
+            <td>48</td>
+            <td>Out of print, replaced by POD</td>
+            <td>Out of print, but a print-on-demand edition is or will be available under a different ISBN. Use only when the POD successor
+               has a different ISBN, normally because different trade terms apply.
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>99</td>
+            <td>Uncertain</td>
+            <td>Apply to customer service</td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

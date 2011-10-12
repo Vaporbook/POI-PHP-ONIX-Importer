@@ -1,0 +1,83 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <title>ONIX Code List 71 [Issue 8]</title><style type="text/css">
+						BODY {
+							font-family: Arial, Helvetica, sanserif;
+						}
+						.listHeading {
+							font-size: 16pt;
+							font-weight: bold;
+							margin-top: 12pt;
+						}
+					</style></head>
+   <body>
+      <div class="listHeading" style="color: red;">ONIX Code Lists Issue 8, April 2008<br>List 71: Sales restriction type code
+      </div>
+      <table width="100%">
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+         <tr align="left">
+            <th width="10%">Value</th>
+            <th width="30%">Description</th>
+            <th width="60%">Notes</th>
+         </tr>
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>00</td>
+            <td>Unspecified - see text</td>
+            <td>Restriction must be described in &lt;SalesRestrictionDetail&gt;</td>
+         </tr>
+         <tr valign="top">
+            <td>01</td>
+            <td>Retailer exclusive / own brand</td>
+            <td>For sale only through designated retailer. Retailer must be named in &lt;SalesOutletName&gt;. Use only when it is not possible to
+               assign the more explicit code 04 or 05.
+            </td>
+         </tr>
+         <tr valign="top">
+            <td>02</td>
+            <td>Office supplies edition</td>
+            <td>For editions sold only though office supplies wholesalers. Retailer(s) and/or distributor(s) may be named in &lt;SalesOutletName&gt;</td>
+         </tr>
+         <tr valign="top">
+            <td>03</td>
+            <td>Internal publisher use only: do not list</td>
+            <td>For an ISBN that is assigned for a publisher's internal purposes</td>
+         </tr>
+         <tr valign="top">
+            <td>04</td>
+            <td>Retailer exclusive</td>
+            <td>For sale only through designated retailer, though not under retailer's own brand/imprint. Retailer must be named in &lt;SalesOutletName&gt;.</td>
+         </tr>
+         <tr valign="top">
+            <td>05</td>
+            <td>Retailer own brand</td>
+            <td>For sale only through designated retailer under retailer's own brand/imprint. Retailer must be named in &lt;SalesOutletName&gt;.</td>
+         </tr>
+         <tr valign="top">
+            <td>06</td>
+            <td>Library edition</td>
+            <td>For sale to libraries only; not for sale through retail trade</td>
+         </tr>
+         <tr valign="top" style="color: red;">
+            <td>07</td>
+            <td>Schools only edition</td>
+            <td>For sale directly to schools only; not for sale through retail trade</td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               <hr>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>
