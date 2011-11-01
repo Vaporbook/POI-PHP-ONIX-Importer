@@ -31,3 +31,10 @@ TESTED SOURCES
 This has been tested with Random House's full catalog .ZOT feed (zip compressed ONIX 2.1), with over 218,000 records successfully converted and imported into a MongoDB store.
 
 Also tested with Penguin-sourced ONIX, also successful at importing.
+
+LOG
+
+2011-10-31 - Added ISBN insert and query via web API. Fixed issue with creation of new records, added test form interface.
+
+
+
