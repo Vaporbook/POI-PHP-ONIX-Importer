@@ -15,6 +15,15 @@ class ONIXMongoStore
 		$this->overwrite = true;
 	}
 	
+	public function getRecordByISBN($isbn)
+	{
+		$isbn = preg_replace('/[^0-9]/', '', $isbn);
+		$m = $this->mongo;
+		$db = $m->onixtest;
+		$collection = $db->products;
+		$ro = $collection->findOne(array('RecordReference'=>$isbn."")); // must convert to string first
+		return $ro;
+	}
 	
 	public function store($o)
 	{
@@ -22,15 +31,25 @@ class ONIXMongoStore
 		$m = $this->mongo;
 		$db = $m->onixtest;
 		$collection = $db->products;
+
+		if(!$collection) {
+			throw new Exception("Collection not found!");
+		}
+		
 		
 		if($this->overwrite) {
-			
+				
 			$ro = $collection->findOne(array('RecordReference'=>$o->RecordReference."")); // must convert to string first
- 			
+
 			// for some dumb reason, we input objects but get back arrays:
 			if(is_array($ro)) {
 				$collection->update(array('RecordReference'=>$o->RecordReference), $o);
 				return 2;
+				
+			} else {
+
+				$collection->insert($o);			
+				return 1;
 			}
 
 		} else {
