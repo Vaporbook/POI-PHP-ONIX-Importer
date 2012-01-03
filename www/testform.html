@@ -2,12 +2,118 @@
 
 ONIX input:
 <form method="post" action="isbn.php">
-	<textarea name="onix" rows="20" cols="70"></textarea>
+	<textarea name="onix" rows="20" cols="70">
+		&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+		&lt;ONIXMessage refname=&quot;ONIXMessage&quot; release=&quot;2.1&quot; shortname=&quot;ONIXmessage&quot;&gt;
+			&lt;Header&gt;
+				&lt;FromEANNumber&gt;1234567890123&lt;/FromEANNumber&gt;
+				&lt;SentDate refname=&quot;SentDate&quot; shortname=&quot;m182&quot;&gt;2007-01-01&lt;/SentDate&gt;
+			&lt;/Header&gt;
+			&lt;Product refname=&quot;Product&quot; shortname=&quot;product&quot;&gt;
+				&lt;RecordReference refname=&quot;RecordReference&quot; shortname=&quot;a001&quot;&gt;0316085391&lt;/RecordReference&gt;
+				&lt;NotificationType refname=&quot;NotificationType&quot; shortname=&quot;a002&quot;&gt;01&lt;/NotificationType&gt;
+				&lt;ProductIdentifier refname=&quot;ProductIdentifier&quot; shortname=&quot;productidentifier&quot;&gt;
+					&lt;ProductIDType refname=&quot;ProductIDType&quot; shortname=&quot;b221&quot;&gt;15&lt;/ProductIDType&gt;
+					&lt;IDTypeName refname=&quot;IDTypeName&quot; shortname=&quot;b233&quot;&gt;ISBN-13&lt;/IDTypeName&gt;
+					&lt;IDValue refname=&quot;IDValue&quot; shortname=&quot;b244&quot;&gt;9781592790241&lt;/IDValue&gt;
+				&lt;/ProductIdentifier&gt;
+				&lt;ProductForm refname=&quot;ProductForm&quot; shortname=&quot;b012&quot;&gt;DG&lt;/ProductForm&gt;
+				&lt;EpubType refname=&quot;EpubType&quot; shortname=&quot;b211&quot;&gt;022&lt;/EpubType&gt;
+				&lt;EpubTypeVersion refname=&quot;EpubTypeVersion&quot; shortname=&quot;b212&quot;&gt;4.8&lt;/EpubTypeVersion&gt;
+				&lt;EpubTypeDescription refname=&quot;EpubTypeDescription&quot; shortname=&quot;b213&quot;&gt;Mobipocket eBook&lt;/EpubTypeDescription&gt;
+				&lt;EpubFormat refname=&quot;EpubFormat&quot; shortname=&quot;b214&quot;&gt;11&lt;/EpubFormat&gt;
+				&lt;EpubFormatDescription refname=&quot;EpubFormatDescription&quot; shortname=&quot;b216&quot;&gt;MobiPocket reader software&lt;/EpubFormatDescription&gt;
+				&lt;EpubSource refname=&quot;EpubSource&quot; shortname=&quot;b278&quot;&gt;06&lt;/EpubSource&gt;
+				&lt;EpubTypeNote refname=&quot;EpubTypeNote&quot; shortname=&quot;b277&quot;&gt;First appearance of this title in Mobipocket Reader format&lt;/EpubTypeNote&gt;
+				&lt;Title&gt;
+					&lt;TitleType&gt;01&lt;/TitleType&gt;
+					&lt;TitleText&gt;Title of the eBook&lt;/TitleText&gt;
+					&lt;Subtitle&gt;Subtitle of the Book&lt;/Subtitle&gt;
+				&lt;/Title&gt;
+				&lt;Contributor refname=&quot;Contributor&quot; shortname=&quot;contributor&quot;&gt;
+					&lt;ContributorRole refname=&quot;ContributorRole&quot; shortname=&quot;b035&quot;&gt;A01&lt;/ContributorRole&gt;
+					&lt;PersonName&gt;Rick Moody&lt;/PersonName&gt;
+					&lt;BiographicalNote refname=&quot;BiographicalNote&quot; shortname=&quot;b044&quot;&gt;Rick Moody is the author of the novels Garden State, which won the Pushcart Press Editors&#x27; Book Award, The Ice 		
+					Storm,	and Purple America; two collections of stories, The Ring of Brightest Angels Around Heaven and Demonology; and a memoir, The Black Veil, winner of the PEN / Martha Albrand 
+					Award. He has also received the Addison Metcalf Award, the Paris Review&#x27;s Aga Khan Prize, and a Guggenheim Fellowship. He lives in Brooklyn, New York.&lt;/BiographicalNote&gt;
+				&lt;/Contributor&gt;
+				&lt;Language refname=&quot;Language&quot; shortname=&quot;language&quot;&gt;
+					&lt;LanguageRole refname=&quot;LanguageRole&quot; shortname=&quot;b253&quot;&gt;01&lt;/LanguageRole&gt;
+					&lt;LanguageCode refname=&quot;LanguageCode&quot; shortname=&quot;b252&quot;&gt;eng&lt;/LanguageCode&gt;
+				&lt;/Language&gt;
+				&lt;Extent&gt;
+					&lt;ExtentType&gt;22&lt;/ExtentType&gt;
+					&lt;ExtentValue&gt;12&lt;/ExtentValue&gt;
+					&lt;ExtentUnit&gt;19&lt;/ExtentUnit&gt;
+				&lt;/Extent&gt;
+				&lt;MainSubject&gt;
+					&lt;MainSubjectSchemeIdentifier&gt;10&lt;/MainSubjectSchemeIdentifier&gt;
+					&lt;SubjectSchemeVersion&gt;1.2&lt;/SubjectSchemeVersion&gt;
+					&lt;SubjectCode&gt;JNF001000&lt;/SubjectCode&gt;
+				&lt;/MainSubject&gt;
+				&lt;Subject&gt;
+					&lt;SubjectSchemeIdentifier&gt;20&lt;/SubjectSchemeIdentifier&gt;
+					&lt;SubjectSchemeVersion&gt;2.1&lt;/SubjectSchemeVersion&gt;
+					&lt;SubjectCode&gt;JNF001000&lt;/SubjectCode&gt;
+				&lt;/Subject&gt;
+				&lt;OtherText refname=&quot;OtherText&quot; shortname=&quot;othertext&quot;&gt;
+					&lt;TextTypeCode refname=&quot;TextTypeCode&quot; shortname=&quot;d102&quot;&gt;01&lt;/TextTypeCode&gt;
+					&lt;TextFormat&gt;02&lt;/TextFormat&gt;
+					&lt;Text refname=&quot;Text&quot; shortname=&quot;d104&quot;&gt;
+					The light that illuminates the world begins in Los Angeles. Begins in darkness, begins in the mountains, begins in empty landscapes, in doubt and remorse. San Antonio Peak throws shadows upon a city of shadows. There are hints of human insignificance; there are nightmares. But just at the moment of intolerability there&#x27;s an eruption of spectra. It&#x27;s morning! Morning is hopeful, uncomplicated, and it scales mountaintops, as it scales all things. The light comes from nowhere fathomable, from an apparently eternal reservoir of emanations, radioactivities. Light edging over the mountaintop and across the lakes of the highlands, light across the Angeles National Forest, light rushing across skeins of smog in the California skies. Light on Redlands, light on the planned communities, light on the guy tossing the morning newspaper from a Toyota with a hundred and ninety-three thousand miles on it. Light on the Santa Ana River, on a drunk sleeping tenderly beside its dregs, light on the Santa Ana Mountains, the San Bernardino Mountains, light on the Prado Basin, where a stabbing victim welters in her wounds.
+					&lt;/Text&gt;
+				&lt;/OtherText&gt;
+				&lt;OtherText refname=&quot;OtherText&quot; shortname=&quot;othertext&quot;&gt;
+					&lt;TextTypeCode refname=&quot;TextTypeCode&quot; shortname=&quot;d102&quot;&gt;02&lt;/TextTypeCode&gt;
+					&lt;TextFormat&gt;02&lt;/TextFormat&gt;
+					&lt;Text refname=&quot;Text&quot; shortname=&quot;d104&quot;&gt;
+					The light that illuminates the world begins in Los Angeles. Begins in darkness, begins in the mountains, begins in empty landscapes, in doubt and remorse. San Antonio Peak throws shadows upon a city of shadows. There are hints of human insignificance; there are nightmares. But just at the moment of intolerability there&#x27;s an eruption of spectra. It&#x27;s morning! Morning is hopeful, uncomplicated, and it scales mountaintops, as it scales all things. The light comes from nowhere fathomable, from an apparently eternal reservoir of emanations, radioactivities. Light edging over the mountaintop and across the lakes of the highlands, light across the Angeles National Forest, light rushing across skeins of smog in the California skies. Light on Redlands, light on the planned communities, light on the guy tossing the morning newspaper from a Toyota with a hundred and ninety-three thousand miles on it. Light on the Santa Ana River, on a drunk sleeping tenderly beside its dregs, light on the Santa Ana Mountains, the San Bernardino Mountains, light on the Prado Basin, where a stabbing victim welters in her wounds.
+					&lt;/Text&gt;
+				&lt;/OtherText&gt;
+				&lt;OtherText refname=&quot;OtherText&quot; shortname=&quot;othertext&quot;&gt;
+					&lt;TextTypeCode refname=&quot;TextTypeCode&quot; shortname=&quot;d102&quot;&gt;03&lt;/TextTypeCode&gt;
+					&lt;TextFormat&gt;02&lt;/TextFormat&gt;
+					&lt;Text refname=&quot;Text&quot; shortname=&quot;d104&quot;&gt;
+						The light that illuminates the world begins in Los Angeles. Begins in darkness, begins in the mountains, begins in empty landscapes, in doubt and remorse. San Antonio Peak throws shadows upon a city of shadows. There are hints of human insignificance; there are nightmares. But just at the moment of intolerability there&#x27;s an eruption of spectra. It&#x27;s morning! Morning is hopeful, uncomplicated, and it scales mountaintops, as it scales all things. The light comes from nowhere fathomable, from an apparently eternal reservoir of emanations, radioactivities. Light edging over the mountaintop and across the lakes of the highlands, light across the Angeles National Forest, light rushing across skeins of smog in the California skies. Light on Redlands, light on the planned communities, light on the guy tossing the morning newspaper from a Toyota with a hundred and ninety-three thousand miles on it. Light on the Santa Ana River, on a drunk sleeping tenderly beside its dregs, light on the Santa Ana Mountains, the San Bernardino Mountains, light on the Prado Basin, where a stabbing victim welters in her wounds.		
+					&lt;/Text&gt;
+				&lt;/OtherText&gt;
+				&lt;OtherText refname=&quot;OtherText&quot; shortname=&quot;othertext&quot;&gt;
+					&lt;TextTypeCode refname=&quot;TextTypeCode&quot; shortname=&quot;d102&quot;&gt;07&lt;/TextTypeCode&gt;
+					&lt;TextFormat&gt;02&lt;/TextFormat&gt;
+					&lt;Text refname=&quot;Text&quot; shortname=&quot;d104&quot;&gt;
+						The light that illuminates the world begins in Los Angeles. Begins in darkness, begins in the mountains, begins in empty landscapes, in doubt and remorse. San Antonio Peak throws shadows upon a city of shadows. There are hints of human insignificance; there are nightmares. But just at the moment of intolerability there&#x27;s an eruption of spectra. It&#x27;s morning! Morning is hopeful, uncomplicated, and it scales mountaintops, as it scales all things. The light comes from nowhere fathomable, from an apparently eternal reservoir of emanations, radioactivities. Light edging over the mountaintop and across the lakes of the highlands, light across the Angeles National Forest, light rushing across skeins of smog in the California skies. Light on Redlands, light on the planned communities, light on the guy tossing the morning newspaper from a Toyota with a hundred and ninety-three thousand miles on it. Light on the Santa Ana River, on a drunk sleeping tenderly beside its dregs, light on the Santa Ana Mountains, the San Bernardino Mountains, light on the Prado Basin, where a stabbing victim welters in her wounds.		
+					&lt;/Text&gt;
+					&lt;TextSourceCorporate&gt;company Name&lt;/TextSourceCorporate&gt;
+				&lt;/OtherText&gt;
+				&lt;Imprint refname=&quot;Imprint&quot; shortname=&quot;imprint&quot;&gt;
+					&lt;ImprintName refname=&quot;ImprintName&quot; shortname=&quot;b079&quot;&gt;Little, Brown and Company&lt;/ImprintName&gt;
+				&lt;/Imprint&gt;
+				&lt;Publisher refname=&quot;Publisher&quot; shortname=&quot;publisher&quot;&gt;
+					&lt;PublishingRole refname=&quot;PublishingRole&quot; shortname=&quot;b291&quot;&gt;01&lt;/PublishingRole&gt;
+					&lt;PublisherName refname=&quot;PublisherName&quot; shortname=&quot;b081&quot;&gt;Little, Brown and Company, Time Warner Book Group&lt;/PublisherName&gt;
+				&lt;/Publisher&gt;
+				&lt;PublicationDate refname=&quot;PublicationDate&quot; shortname=&quot;b003&quot;&gt;2006-01-01&lt;/PublicationDate&gt;
+				&lt;SupplyDetail refname=&quot;SupplyDetail&quot; shortname=&quot;supplydetail&quot;&gt;
+					&lt;SupplierIdentifier&gt;
+						&lt;SupplierIDType/&gt;
+						&lt;IDValue/&gt;
+					&lt;/SupplierIdentifier&gt;
+					&lt;AvailabilityCode/&gt;
+					&lt;Price refname=&quot;Price&quot; shortname=&quot;price&quot;&gt;
+						&lt;PriceTypeCode refname=&quot;PriceTypeCode&quot; shortname=&quot;j148&quot;&gt;01&lt;/PriceTypeCode&gt;
+						&lt;PriceAmount refname=&quot;PriceAmount&quot; shortname=&quot;j151&quot;&gt;35.00&lt;/PriceAmount&gt;
+					&lt;/Price&gt;
+				&lt;/SupplyDetail&gt;
+			&lt;/Product&gt;
+		&lt;/ONIXMessage&gt;
+
+		
+	</textarea>
 		<input type="submit"/>
 </form>
 
 
-ISBN query:
+ISBN query (Uses the RecordReference Identifier, which may not be the actual ISBN):
 <form method="get" action="isbn.php">
 	<input name="isbn" size="20" value=""></input>
 	<input type="submit"/>
