@@ -9,53 +9,67 @@ class ONIXMongoStore
 	
 	*/
 
-	public function __construct($mongohost='localhost', $mongoport='27017')
+	public function __construct($mongohost='localhost',
+															$mongoport='27017',
+															$dbname="onixtest",
+															$collection="products")
 	{
 		$this->mongo = new Mongo();
 		$this->overwrite = true;
+		$this->m = $this->mongo;
+		$this->db = $this->m->selectDb($dbname);
+		$this->collection = $this->db->selectCollection($collection);
 	}
-	
-	public function getRecordByISBN($isbn)
+
+	public function getRecent($c=null)
 	{
-		$isbn = preg_replace('/[^0-9]/', '', $isbn);
-		$m = $this->mongo;
-		$db = $m->onixtest;
-		$collection = $db->products;
-		$ro = $collection->findOne(array('RecordReference'=>$isbn."")); // must convert to string first
+		$c = $this->_collection($c);
+		$cursor = $c->find();
+		$ro = array();
+		foreach($cursor as $doc) {
+			error_log(print_r($doc,true));
+			$ro[] = array(
+					'RecordReference'=>$doc['RecordReference'],
+					'Message'=>$doc['Title']['TitleText']. " (".$doc['RecordReference'].")",
+					'Result'=>$doc);
+		}
 		return $ro;
 	}
 	
-	public function store($o)
+	public function getRecordByISBN($isbn, $c=null)
 	{
-		
-		$m = $this->mongo;
-		$db = $m->onixtest;
-		$collection = $db->products;
-
-		if(!$collection) {
-			throw new Exception("Collection not found!");
-		}
-		
+		$c = $this->_collection($c);
+		$isbn = preg_replace('/[^0-9]/', '', $isbn);
+		$ro = $c->findOne(array('RecordReference'=>$isbn."")); // must convert to string firs
+		return $ro;
+	}
+	
+	public function store($o, $c=null)
+	{
+		$c = $this->_collection($c);
 		
 		if($this->overwrite) {
 				
-			$ro = $collection->findOne(array('RecordReference'=>$o->RecordReference."")); // must convert to string first
+			$ro = $c->findOne(array('RecordReference'=>$o->RecordReference."")); // must convert to string first
 
 			// for some dumb reason, we input objects but get back arrays:
 			if(is_array($ro)) {
-				$collection->update(array('RecordReference'=>$o->RecordReference), $o);
-				return 2;
+				$c->update(array('RecordReference'=>$o->RecordReference), $o);
+				$ro['isnew'] = true;
+				return $ro;
 				
 			} else {
 
-				$collection->insert($o);			
-				return 1;
+				$ro = $c->insert($o, array('safe'=>true));			
+				$ro['isnew'] = true;
+				return $ro;
 			}
 
 		} else {
 			
-			$collection->insert($o);			
-			return 1;
+			$ro = $c->insert($o, array('safe'=>true));
+			$ro['isnew'] = true;
+			return $ro;
 			
 		}
 			
@@ -69,6 +83,20 @@ class ONIXMongoStore
 		
 		
 	}
+	
+	private function _collection($c)
+	{
+		if(!$c) {
+			$c = $this->collection;
+		} else {
+			$c = $this->db->selectCollection($c);
+		}
+		if(!$c) {
+			throw new Exception("Collection not found!");
+		}
+		return $c;
+	}
+	
 	
 	
 	

@@ -23,6 +23,7 @@ GET isbn.php?isbn=[product.RecordReference]
 */
 
 $oms = new ONIXMongoStore();
+$results = array();
 
 if($_SERVER['REQUEST_METHOD']=='POST') {
 	
@@ -88,11 +89,11 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 												case 1: /* early (>6 mos) notice */
 
 													$result = $oms->store($product);
-													if($result==1) {
+													if(@$result['isnew']) {
 
 														echo "stored early notice product:".$product->RecordReference."\n";											
 
-													} else if($result==2){
+													} else {
 
 														echo "replaced early notice product:".$product->RecordReference."\n";											
 
@@ -103,11 +104,12 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 													$result = $oms->store($product);
-													if($result==1) {
-
+													
+													if(@$result['isnew']) {
+													
 														echo "stored advance notice product:".$product->RecordReference."\n";											
 
-													} else if($result==2) {
+													} else {
 
 														echo "replaced advance notice product:".$product->RecordReference."\n";											
 
@@ -118,18 +120,14 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 												case 3: /* book-in-hand (approx. at pub date) */
 
 													$result = $oms->store($product);
-													if($result==1) {
+													if(@$result['isnew']) {
 
 														echo "stored book-in-hand product:".$product->RecordReference."\n";											
 
-													} else if ($result==2) {
+													} else {
 
 														echo "replaced book-in-hand product:".$product->RecordReference."\n";											
 
-													} else {
-														
-														echo "error result:".$result;
-														
 													}
 
 												break;
@@ -137,11 +135,11 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 												case 4: /* update record */
 
 													$result = $oms->store($product);
-													if($result==1) {
-
+													if(@$result['isnew']) {
+													
 														echo "stored update notification product:".$product->RecordReference."\n";											
 
-													} else if($result==2) {
+													} else {
 
 														echo "replaced update notification product:".$product->RecordReference."\n";											
 
@@ -160,6 +158,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 													echo "NOOP: no code: ".$product->RecordReference."\n";	
 												break;
 											}
+											$results[] = $result;
 
 
 										} catch (Exception $e) {
@@ -175,8 +174,18 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 	         }
 	      }
 	);
-	$onixcat->processONIX($file);
-	
+	try {
+		
+		// this could represent hundreds of records, so the return data will just contain success or failure?
+		// how to know what's been processed? list of Mongo ObjectIds would be ideal?
+		
+		$onixcat->processONIX($file);
+		
+		echo json_encode($results);
+		
+	} catch (Exception $e) {
+		echo $e->getMessage();
+	}
 	
 } elseif ($_SERVER['REQUEST_METHOD']=='GET') {
 	
