@@ -19,6 +19,7 @@ class ONIXMongoStore
 		$this->m = $this->mongo;
 		$this->db = $this->m->selectDb($dbname);
 		$this->collection = $this->db->selectCollection($collection);
+		$this->collection->ensureIndex('RecordReference');
 	}
 
 	public function getRecent($c=null)
@@ -27,7 +28,7 @@ class ONIXMongoStore
 		$cursor = $c->find();
 		$ro = array();
 		foreach($cursor as $doc) {
-			error_log(print_r($doc,true));
+			//error_log(print_r($doc,true));
 			$ro[] = array(
 					'RecordReference'=>$doc['RecordReference'],
 					'Message'=>$doc['Title']['TitleText']. " (".$doc['RecordReference'].")",
@@ -36,13 +37,28 @@ class ONIXMongoStore
 		return $ro;
 	}
 	
-	public function getRecordByISBN($isbn, $c=null)
+	public function getRecord($ref, $c=null)
 	{
 		$c = $this->_collection($c);
-		$isbn = preg_replace('/[^0-9]/', '', $isbn);
-		$ro = $c->findOne(array('RecordReference'=>$isbn."")); // must convert to string firs
+		$ro = $c->findOne(array('RecordReference'=>$ref."")); // must convert to string firs
 		return $ro;
 	}
+	
+	public function find($query, $c=null)
+	{
+		$c = $this->_collection($c);
+		$cursor = $c->find($query);
+		$ro = array();
+		foreach($cursor as $doc) {
+			//error_log(print_r($doc,true));
+			$ro[] = array(
+					'RecordReference'=>$doc['RecordReference'],
+					'Message'=>$doc['Title']['TitleText']. " (".$doc['RecordReference'].")",
+					'Result'=>$doc);
+		}
+		return $ro;
+	}
+	
 	
 	public function store($o, $c=null)
 	{

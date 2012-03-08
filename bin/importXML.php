@@ -30,6 +30,8 @@ if($format == 'XML') {
 }
 
 $te = new BookGluttonONIXTagExpander(); // only necessary if short tags are input
+$oms = new ONIXMongoStore();
+$oms->setOverwriting(true);
 
 $onixcat->setAnyTagHandler(
 	
@@ -39,6 +41,7 @@ $onixcat->setAnyTagHandler(
 				 // global for anything you want to reference outside its scope
 				
 				 global $te;
+				 global $oms;
 				
          if($reader->depth==1) {
 
@@ -67,8 +70,6 @@ $onixcat->setAnyTagHandler(
 											throw new Exception('could not parse xml');
 										}
 
-										$oms = new ONIXMongoStore();
-										$oms->setOverwriting(true);
 
 /*
 
@@ -93,11 +94,12 @@ may also vary according to which publisher the record comes from. The notificati
 											case 1: /* early (>6 mos) notice */
 											
 												$result = $oms->store($product);
-												if($result==1) {
+
+												if(@$result['isnew']) {
 
 													echo "stored early notice product:".$product->RecordReference."\n";											
 
-												} else if($result==2){
+												} else {
 													
 													echo "replaced early notice product:".$product->RecordReference."\n";											
 
@@ -108,11 +110,11 @@ may also vary according to which publisher the record comes from. The notificati
 											
 											
 												$result = $oms->store($product);
-												if($result==1) {
+												if(@$result['isnew']) {
 
 													echo "stored advance notice product:".$product->RecordReference."\n";											
 
-												} else if($result==2) {
+												} else   {
 																										
 													echo "replaced advance notice product:".$product->RecordReference."\n";											
 													
@@ -123,11 +125,11 @@ may also vary according to which publisher the record comes from. The notificati
 											case 3: /* book-in-hand (approx. at pub date) */
 											
 												$result = $oms->store($product);
-												if($result==1) {
+												if(@$result['isnew']) {
 
 													echo "stored book-in-hand product:".$product->RecordReference."\n";											
 
-												} else if ($result==2) {
+												} else   {
 
 													echo "replaced book-in-hand product:".$product->RecordReference."\n";											
 
@@ -138,11 +140,11 @@ may also vary according to which publisher the record comes from. The notificati
 											case 4: /* update record */
 											
 												$result = $oms->store($product);
-												if($result==1) {
+												if(@$result['isnew']) {
 
 													echo "stored update notification product:".$product->RecordReference."\n";											
 
-												} else if($result==2) {
+												} else   {
 
 													echo "replaced update notification product:".$product->RecordReference."\n";											
 													
