@@ -36,5 +36,13 @@ LOG
 
 2011-10-31 - Added ISBN insert and query via web API. Fixed issue with creation of new records, added test form interface.
 
+2012-3-7 - Added find() method. You can now query like this:
+
+$records = $oms->find(array(
+		'$where'=>
+		'this.Title.TitleText.match(/'. $q . '/) || this.RecordReference.match(/'. $q .'/) || this.ProductIdentifier.IDValue.match(/'. $q .'/)'
+		)
+);
+
 
 
