@@ -37,6 +37,57 @@ class ONIXMongoStore
 		return $ro;
 	}
 	
+	public function searchProductIds($q)
+	{
+		
+		 return $this->find(array(
+				'ProductIdentifier.IDValue'=>$q
+			));
+		
+		
+	}
+	
+	public function findByProductId($isbn, $type=15)
+	{ 
+		// usually used with an ISBN-13
+		
+		return $this->find(array(
+				'$and'=>array(
+					(object) array(
+						"ProductIdentifier.IDValue"=>"$isbn"
+					),
+					(object) array(
+						"ProductIdentifer.ProductIDType"=>"$type"
+					)
+				)
+			));
+			
+	}
+	
+	public function searchRecordRefTitleISBN($q)
+	{
+		// JS where clause for regex matching
+		$whc=<<<END
+			this.Title.TitleText.match(/$q/i) || this.RecordReference.match(/$q/i)
+END
+;
+		return $this->find(array(
+			  '$or'=>array(
+					(object) array( // match any part of title or rr
+						'$where'=>$whc
+					),
+					(object) array( // also exact match on ISBN
+						"ProductIdentifier.IDValue"=>"$q"
+					),
+					(object) array( // or exact match on title
+						"Title.TitleText"=>"$q"
+					)
+				 )/*,
+				'$where'=>$whc*/
+		));
+		
+	}
+	
 	public function getRecord($ref, $c=null)
 	{
 		$c = $this->_collection($c);
